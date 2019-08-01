@@ -10,11 +10,13 @@ pipeline {
         stage('Test') { 
             steps {
                 // 
+                ls
             }
         }
         stage('Deploy') { 
             steps {
                 // 
+                ls
             }
         }
     }
