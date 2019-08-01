@@ -2,11 +2,15 @@ pipeline {
   agent any
 
   environment {
-    // FOO will be available in entire pipeline
+    // global variable
     FOO = "PIPELINE"
   }
 
   stages {
+    stage("SCM") {
+      steps {
+        git url: 'https://github.com/farchide/awesomecontainer.git'      }
+    }
     stage("local") {
       environment {
         // BAR will only be available in this stage
