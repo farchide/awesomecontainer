@@ -13,8 +13,8 @@ pipeline {
             steps {
                 // log.info 'Starting' 
                 script { 
-                    myLib.log.info 'Starting'
-                    myLib.log.warning 'Nothing to do!'
+                    myLib.Utils.log.info(this, "Guillaume")
+                    myLib.Utils.log.warning(this, "Not Guillaume")
                 }
             }
         }
