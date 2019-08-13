@@ -1,7 +1,6 @@
 library identifier: 'utils@master', retriever: modernSCM(
   [$class: 'GitSCMSource',
-   remote: 'https://github.com/farchide/my-jenkins-utils.git',
-   credentialsId: 'my-private-key'])
+   remote: 'https://github.com/farchide/my-jenkins-utils.git'])
 
 @Library('utils') _
 
