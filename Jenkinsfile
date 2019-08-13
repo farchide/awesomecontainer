@@ -1,29 +1,19 @@
+library identifier: 'utils@master', retriever: modernSCM(
+  [$class: 'GitSCMSource',
+   remote: 'https://github.com/farchide/my-jenkins-utils.git',
+   credentialsId: 'my-private-key'])
+
+@Library('utils') _
+
 pipeline {
-  agent any
-
-  environment {
-    // global variable
-    FOO = "PIPELINE"
-  }
-
-  stages {
-    stage("SCM") {
-      steps {
-        git url: 'https://github.com/farchide/awesomecontainer.git'      }
+    agent none
+    stage ('Example') {
+        steps {
+            // log.info 'Starting' 
+            script { 
+                log.info 'Starting'
+                log.warning 'Nothing to do!'
+            }
+        }
     }
-    stage("local") {
-      environment {
-        // BAR will only be available in this stage
-        BAR = "STAGE"
-      }
-      steps {
-        sh 'echo "FOO is $FOO and BAR is $BAR"'
-      }
-    }
-    stage("global") {
-      steps {
-        sh 'echo "FOO is $FOO and BAR is $BAR"'
-      }
-    }
-  }
 }
