@@ -8,12 +8,14 @@ myLib=library (identifier: 'utils@master', retriever: modernSCM(
 
 pipeline {
     agent none
-    stage ('Example') {
-        steps {
-            // log.info 'Starting' 
-            script { 
-                myLib.utils.log.info 'Starting'
-                myLib.utils.log.warning 'Nothing to do!'
+    stages {
+        stage ('Example') {
+            steps {
+                // log.info 'Starting' 
+                script { 
+                    myLib.utils.log.info 'Starting'
+                    myLib.utils.log.warning 'Nothing to do!'
+                }
             }
         }
     }
