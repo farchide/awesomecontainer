@@ -13,8 +13,8 @@ pipeline {
             steps {
                 // log.info 'Starting' 
                 script { 
-                    myLib.utils.log.info 'Starting'
-                    myLib.utils.log.warning 'Nothing to do!'
+                    myLib.log.info 'Starting'
+                    myLib.log.warning 'Nothing to do!'
                 }
             }
         }
