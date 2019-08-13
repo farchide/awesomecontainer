@@ -1,8 +1,10 @@
-library identifier: 'utils@master', retriever: modernSCM(
-  [$class: 'GitSCMSource',
-   remote: 'https://github.com/farchide/my-jenkins-utils.git'])
+myLib=library (identifier: 'utils@master', retriever: modernSCM(
+    [$class: 'GitSCMSource',
+        remote: 'https://github.com/farchide/my-jenkins-utils.git',
+        includes: '*',
+        excludes: 'test'
+    ]))
 
-@Library('utils') _
 
 pipeline {
     agent none
@@ -10,8 +12,8 @@ pipeline {
         steps {
             // log.info 'Starting' 
             script { 
-                log.info 'Starting'
-                log.warning 'Nothing to do!'
+                myLib.utils.log.info 'Starting'
+                myLib.utils.log.warning 'Nothing to do!'
             }
         }
     }
