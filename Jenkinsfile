@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        docker { image 'node:7-alpine' }
+        docker { image 'mcr.microsoft.com/azure-cli' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'az --version'
             }
         }
     }
