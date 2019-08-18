@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh 'hostname -f'
                 sh 'az --version'
             }
         }
