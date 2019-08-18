@@ -6,7 +6,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'hostname -f'
-                sh 'touch /.azure && chmod 755 /.azure'
+                sh 'cd /home'
                 sh 'az --version'
             }
         }
