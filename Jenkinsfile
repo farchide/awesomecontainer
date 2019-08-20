@@ -1,13 +1,15 @@
 pipeline {
     agent {
-        docker { image 'mcr.microsoft.com/azure-cli' }
+        dockerfile {
+            filename 'Dockerfile.build'
+            dir 'build'
+        }
     }
     stages {
-        stage('Test') {
+        stage('dockerlint test') {
             steps {
-                sh 'hostname -f'
-                sh 'chmod -R 777 /.azure'
-                sh 'az --version'
+                sh 'node --version'
+                sh 'dockerlint Dockerfile'
             }
         }
     }

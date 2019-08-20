@@ -1,0 +1,25 @@
+FROM python:3.7.3-slim-stretch
+
+ENV AZURECLI_VERSION=2.0.52
+ENV HOME /var/lib/jenkins
+
+RUN adduser jenkins --home $HOME && \
+    usermod -aG staff jenkins && \
+    apt-get update && \
+    mkdir $HOME/.azure && \
+    chown -R jenkins:staff $HOME/.azure && \
+    apt-get -y install gcc && \
+    apt-get -y upgrade libssh2-1 libsystemd0 libudev1 && \
+    pip install --upgrade requests && \
+    pip install azure-cli==${AZURECLI_VERSION} && \
+    az extension add --name azure-firewall && \
+    chmod -R 0777 $HOME/.azure && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get -y autoremove && \
+    apt-get -y purge gcc
+
+WORKDIR /var/lib/jenkins
+
+USER jenkins
+
+HEALTHCHECK --interval=5m --timeout=3s CMD az --version || exit 1

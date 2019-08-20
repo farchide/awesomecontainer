@@ -1,0 +1,8 @@
+Dockerfile.build
+FROM alpine:3.10
+
+#install npm
+RUN apk add --update nodejs npm
+
+# install dockerline
+RUN npm install -g dockerlint
