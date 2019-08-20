@@ -1,4 +1,3 @@
-Dockerfile.build
 FROM alpine:3.10
 
 #install npm
